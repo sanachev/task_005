@@ -3,7 +3,7 @@ FLAGS=-std=c11 -Wall -Werror -Wextra
 PATH=../bin
 NAME=house
 
-all: $(NAME) clean
+all: $(NAME)
 
 $(NAME): $(NAME).o
 	$(CC) -o ../bin/$(NAME) $(NAME).o
@@ -21,7 +21,3 @@ check-format:
 
 cpp-check:
 	cppcheck --enable=all --suppress=missingIncludeSystem *.c *.h
-
-
-clean:
-	rm -rf *.o

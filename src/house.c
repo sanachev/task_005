@@ -1,24 +1,25 @@
-#include <stdio.h>
 #include "house.h"
+
+#include <stdio.h>
 
 /* Практика приводит к совершенству */
 
-int main(){
-    int n, k, h, dep, result;
+int main() {
+    int n, k, h, dep, surcharge;
 
     input(&n, &k, &h, &dep);
-    output();
-    
+
+    surcharge = calculate(n, k, h, dep);
+
+    output(surcharge);
+
     return 0;
 }
 
-void input(int *n, int *k, int *h, int *dep){
-    scanf("%d %d %d %d", n, k, h, dep);
-}
+void input(int *n, int *k, int *h, int *dep) { scanf("%d %d %d %d", n, k, h, dep); }
 
-
-int calculate(int n, int k, int h, int dep, int* result){
-    int basement, walls, roof,  cost;
+int calculate(int n, int k, int h, int dep) {
+    int basement, walls, roof, cost, surcharge;
 
     basement = n * k * 1000;
     walls = ((n * h * 500) * 2) + ((k * h * 500) * 2);
@@ -26,19 +27,18 @@ int calculate(int n, int k, int h, int dep, int* result){
 
     cost = basement + walls + roof;
 
-    if (dep - cost >=0){
-        *result = 0;
+    if (dep - cost >= 0) {
+        surcharge = 0;
+    } else {
+        surcharge = -1 * (dep - cost);
     }
-    else {
-        *result = -1 * (dep - cost);
-    }
+    return surcharge;
 }
 
-void output(result){
-    if (result == 0){
+void output(int surcharge) {
+    if (surcharge == 0) {
         printf("YES");
-    }
-    else {
-        printf("NO %d", result);
+    } else {
+        printf("NO %d", surcharge);
     }
 }
