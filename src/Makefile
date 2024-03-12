@@ -5,11 +5,8 @@ NAME=house
 
 all: $(NAME)
 
-$(NAME): $(NAME).o
-	$(CC) -o ../bin/$(NAME) $(NAME).o
-
-$(NAME).o:
-	$(CC) $(FLAGS) -c $(NAME).c
+$(NAME): 
+	$(CC) -o ../bin/$(NAME) $(NAME).c
 
 set-format:
 	clang-format -style='{BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 110}' -i *.c
