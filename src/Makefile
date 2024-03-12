@@ -1,9 +1,8 @@
 CC=gcc
 FLAGS=-std=c11 -Wall -Werror -Wextra
-PATH=../bin
+
 NAME=house
 
-all: $(NAME)
 
 $(NAME): 
 	$(CC) -o ../bin/$(NAME) $(NAME).c
